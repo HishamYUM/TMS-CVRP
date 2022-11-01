@@ -116,18 +116,18 @@
             {% endif %}
 
             <!-- cities and solutions  -->
-            {% if emplacements and solution and valeurselectionnee %}
+            {% if cities and solution and valeurselectionnee %}
                 <div class="container row mx-3">
 
                     <!-- show cities list  -->
                     <div class="col-sm-6 col-md-6 ">
-                        {% if emplacements %}
+                        {% if cities %}
                         <div class="card text-center mt-4" style="width: 18rem;">  
                             <div class="card-header bg-success bg-gradient text-white">Cities to visit</div>
                         
                             <div class="card-body bg-light">
                                 <ul class="list-group">
-                                    {% for e in emplacements %}
+                                    {% for e in cities %}
                                         {% if forloop.first %}
                                             <li class="list-group-item list-group-item-action active" aria-current="true"><i class="bi bi-house-door-fill"></i> {{ e }} </li>
                                         

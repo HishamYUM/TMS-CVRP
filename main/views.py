@@ -11,18 +11,18 @@ def importation(request):
     if request.method == 'POST':
         file = request.FILES["myfile"]
         csv = pd.read_csv(file)
-        emplacements=csv["emplacements"].tolist()
-        DistMatrix = namesToDist(emplacements)
+        cities=csv["cities"].tolist()
+        DistMatrix = namesToDist(cities)
         valeurselectionnee = request.POST["methode"]
         if valeurselectionnee == 'KNN':
-            solution = nearestNeighbor(DistMatrix,emplacements)
+            solution = nearestNeighbor(DistMatrix,cities)
         elif valeurselectionnee == 'Branch and Bound':
-            solution = BranchandBound(DistMatrix,emplacements)
+            solution = BranchandBound(DistMatrix,cities)
         elif valeurselectionnee == 'Clarke and Wright':
-            solution = clarke_and_wright(DistMatrix,emplacements)
+            solution = clarke_and_wright(DistMatrix,cities)
 
         json_list = json.dumps(solution)
-        context = {"emplacements": emplacements, "solution": solution, "valeurselectionnee": valeurselectionnee, "json_list": json_list}
+        context = {"cities": cities, "solution": solution, "valeurselectionnee": valeurselectionnee, "json_list": json_list}
         
 
         return render(request,"index.html",context)
